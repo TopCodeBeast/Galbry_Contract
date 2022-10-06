@@ -29,6 +29,6 @@ main()
   });
 
 /*
-Marketplace deployed to: 0x012dD7821EC05a66C499FAa1d50adc59357F51cf
-Nft deployed to: 0xdfb928C75468AE116fe7F43c34cFbdd21f463E33
+Marketplace deployed to: 0xbcE8148CEA5CE1b30025853FdC8B4783110CBCF3
+Nft deployed to: 0xD9671bffB2c3C3b6b10e0AfC6910a9173FD0BaD7
 */

@@ -212,6 +212,56 @@ contract Marketplace is ReentrancyGuard {
     }
 
     /**
+     * @dev Fetch all market items
+     */
+    function fetchAllMarketItems() public view returns (MarketItem[] memory) {
+        uint256 itemsCount = _marketItemIds.current();
+        MarketItem[] memory marketItems = new MarketItem[](itemsCount);
+        for (uint256 i = 0; i < itemsCount; i++) {
+            MarketItem memory item = marketItemIdToMarketItem[i + 1];
+            marketItems[i] = (item);
+        }
+        return marketItems;
+    }
+
+    /**
+     * @dev Fetch custom market items
+     */
+    function fetchMarketItemsCustom(uint256 from, uint256 count)
+        public
+        view
+        returns (uint256, MarketItem[] memory)
+    {
+        uint256 totalItemCount = _marketItemIds.current();
+        uint256 actualEnd = totalItemCount > (from + count)
+            ? (from + count)
+            : totalItemCount;
+        uint256 itemsCount = actualEnd - from;
+        MarketItem[] memory marketItems = new MarketItem[](itemsCount);
+        for (uint256 i = from; i < actualEnd; i++) {
+            MarketItem memory item = marketItemIdToMarketItem[i + 1];
+            marketItems[i - from] = (item);
+        }
+        return (totalItemCount, marketItems);
+    }
+
+    /**
+     * @dev Fetch market item from id
+     */
+    function fetchMarketItemById(uint256 marketItemId)
+        public
+        view
+        returns (MarketItem memory)
+    {
+        uint256 totalItemCount = _marketItemIds.current();
+        require(
+            marketItemId > 0 && marketItemId <= totalItemCount,
+            "Must be valid id"
+        );
+        return marketItemIdToMarketItem[marketItemId];
+    }
+
+    /**
      * @dev Fetch non sold and non canceled market items
      */
     function fetchAvailableMarketItems()

@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "D:\\work\\galbry\\Galbry_Contract\\contracts\\Marketplace.sol": {
-      "lastModificationDate": 1664796424493,
-      "contentHash": "113b28343c28f3126160bf5876259adc",
+      "lastModificationDate": 1664875733787,
+      "contentHash": "0975a4c89130f976be44a9a201d84f32",
       "sourceName": "contracts/Marketplace.sol",
       "solcConfig": {
         "version": "0.8.4",
